@@ -617,26 +617,37 @@ Understanding these concepts makes it easier to move from one cloud provider to 
 
 # References
 
-This report was based mainly on official cloud provider documentation:
+The following official documentation was used as the main reference for this report.
 
-* Microsoft Learn – Microsoft Entra ID
-* Microsoft Learn – Azure Monitor
-* Microsoft Learn – Azure Policy
-* Microsoft Learn – Microsoft Defender for Cloud
-* Microsoft Learn – Microsoft Sentinel
-* AWS Documentation – AWS IAM and IAM Identity Center
-* AWS Documentation – Amazon CloudWatch
-* AWS Documentation – AWS Config
-* AWS Documentation – AWS Organizations
-* AWS Documentation – AWS Security Hub
-* AWS Documentation – Amazon GuardDuty
-* AWS Documentation – Amazon Inspector
-* AWS Documentation – Amazon Security Lake
-* Google Cloud Documentation – Cloud IAM
-* Google Cloud Documentation – Cloud Monitoring and Logging
-* Google Cloud Documentation – Organization Policy
-* Google Cloud Documentation – Security Command Center
-* Google Cloud Documentation – Google Security Operations
+## Microsoft Azure
+
+- [Microsoft Entra ID Documentation](https://learn.microsoft.com/en-us/entra/identity/)
+- [Azure Monitor Documentation](https://learn.microsoft.com/en-us/azure/azure-monitor/)
+- [Azure Policy Documentation](https://learn.microsoft.com/en-us/azure/governance/policy/)
+- [Microsoft Defender for Cloud Documentation](https://learn.microsoft.com/en-us/azure/defender-for-cloud/)
+- [Microsoft Sentinel Documentation](https://learn.microsoft.com/en-us/azure/sentinel/)
+
+## Amazon Web Services
+
+- [AWS Identity and Access Management (IAM)](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html)
+- [AWS IAM Identity Center](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html)
+- [Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html)
+- [AWS Config](https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html)
+- [AWS Organizations Service Control Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
+- [AWS Security Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html)
+- [Amazon GuardDuty](https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html)
+- [Amazon Inspector](https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html)
+- [Amazon Security Lake](https://docs.aws.amazon.com/security-lake/latest/userguide/what-is-security-lake.html)
+
+## Google Cloud
+
+- [Google Cloud Identity and Access Management (IAM)](https://cloud.google.com/iam/docs)
+- [Cloud Identity Documentation](https://cloud.google.com/identity/docs)
+- [Cloud Monitoring Documentation](https://cloud.google.com/monitoring/docs)
+- [Cloud Logging Documentation](https://cloud.google.com/logging/docs)
+- [Organization Policy Service](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+- [Security Command Center](https://cloud.google.com/security-command-center/docs)
+- [Google Security Operations](https://cloud.google.com/chronicle/docs)
 
 ---
 
