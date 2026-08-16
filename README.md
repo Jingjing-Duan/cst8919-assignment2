@@ -96,6 +96,19 @@ Google Cloud IAM has a similar role-based model and integrates closely with Goog
 For DevSecOps, all three can avoid storing permanent credentials in deployment pipelines by using roles, service identities, or federation.
 
 ---
+## Identity Service Summary
+
+| Requirement               | Microsoft Entra ID                                                                                   | AWS IAM + IAM Identity Center                                                           | Google Cloud Identity + IAM                                                                    |
+| ------------------------- | ---------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| **Overview**              | Centralized identity, authentication, SSO, and access management for Microsoft cloud services        | IAM controls AWS resource permissions, while IAM Identity Center provides workforce SSO | Cloud Identity manages users, while IAM controls access to Google Cloud resources              |
+| **Core Features**         | SSO, MFA, Conditional Access, users, groups, roles, federation                                       | IAM policies, roles, temporary credentials, SSO, federation, multi-account access       | IAM roles, service accounts, SSO, federation, workload identity                                |
+| **Security & Compliance** | Supports least privilege, MFA, Conditional Access, and Microsoft's compliance programs               | Supports MFA, least privilege, temporary credentials, and AWS compliance programs       | Supports least privilege, service identities, federation, and Google Cloud compliance programs |
+| **Pricing Model**         | Free and paid licensing tiers; advanced features such as Conditional Access require higher licensing | IAM and IAM Identity Center generally have no separate service charge                   | Cloud Identity has Free and Premium editions; IAM itself generally has no separate charge      |
+| **DevSecOps Integration** | GitHub Actions, Azure DevOps, Terraform, Azure CLI, managed identities                               | GitHub Actions, CodePipeline, Terraform, AWS CLI, IAM roles                             | Cloud Build, GitHub Actions, Terraform, Google Cloud CLI, service accounts                     |
+
+Microsoft Entra ID has several licensing levels, and Conditional Access requires Microsoft Entra ID P1 or above. Google Cloud Identity also provides Free and Premium editions. These pricing approaches are different from AWS IAM, where identity permissions themselves generally do not create an additional service charge.
+
+---
 
 # 2. Monitoring and Logging
 
@@ -176,6 +189,20 @@ Google Cloud uses Cloud Monitoring and Cloud Logging.
 The biggest difference for me is the query experience. In Azure, we worked directly with KQL, which is very useful for security investigations.
 
 From a DevSecOps perspective, these services are important because a successful deployment does not mean the system will continue working correctly. Monitoring provides visibility after deployment.
+
+---
+
+## Monitoring and Logging Summary
+
+| Requirement               | Azure Monitor + Log Analytics                                                   | Amazon CloudWatch                                                            | Google Cloud Monitoring + Logging                                             |
+| ------------------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| **Overview**              | Collects metrics, logs, application telemetry, and security events              | Provides monitoring, metrics, logs, dashboards, and alarms for AWS workloads | Provides centralized metrics, logs, dashboards, and alerting for Google Cloud |
+| **Core Features**         | KQL queries, Log Analytics workspaces, alerts, dashboards, Application Insights | Metrics, CloudWatch Logs, dashboards, alarms, Logs Insights                  | Cloud Logging, Cloud Monitoring, alerting policies, dashboards, log queries   |
+| **Security & Compliance** | Supports audit logging, security investigations, and Azure compliance programs  | Can work with CloudTrail for audit and security monitoring                   | Provides Cloud Audit Logs and integrates with Google Cloud security services  |
+| **Pricing Model**         | Mainly based on log ingestion, retention, and monitoring usage                  | Usage-based pricing for logs, metrics, alarms, dashboards, and queries       | Mainly based on log volume, storage, retention, and monitoring usage          |
+| **DevSecOps Integration** | Azure DevOps, GitHub Actions, AKS, App Service, Functions                       | CodePipeline, Lambda, ECS, EKS, EC2, EventBridge                             | Cloud Build, GKE, Cloud Run, Cloud Functions, Pub/Sub                         |
+
+All three platforms follow a similar monitoring model: **collect telemetry, analyze it, and generate alerts**. Azure Monitor charges for areas such as Log Analytics data ingestion, so log volume is an important cost consideration.
 
 ---
 
@@ -271,6 +298,20 @@ This is important because governance rules should be version controlled just lik
 
 ---
 
+## Governance and Policy Summary
+
+| Requirement               | Azure Policy                                                              | AWS Config + SCPs                                                                                             | Google Organization Policy                                                               |
+| ------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| **Overview**              | Evaluates and enforces organizational rules on Azure resources            | Config evaluates resource compliance, while SCPs restrict actions across AWS accounts                         | Applies centralized constraints across Google Cloud organizations, folders, and projects |
+| **Core Features**         | Audit, Deny, Modify, DeployIfNotExists, initiatives, compliance dashboard | Config rules, configuration history, conformance packs, SCP permission guardrails                             | Built-in constraints, custom constraints, policy inheritance                             |
+| **Security & Compliance** | Can map policies to regulatory frameworks and security baselines          | Config evaluates configurations against security requirements; SCPs enforce organization-level guardrails     | Helps prevent insecure configurations and enforce organization-wide rules                |
+| **Pricing Model**         | Basic policy evaluation normally has no separate charge                   | AWS Config charges mainly for configuration recording and rule evaluation; SCPs are part of AWS Organizations | Basic Organization Policy enforcement generally has no separate charge                   |
+| **DevSecOps Integration** | Terraform, Bicep, ARM, Azure CLI, GitHub Actions                          | Terraform, CloudFormation, AWS CLI, CI/CD pipelines                                                           | Terraform, Google Cloud CLI, APIs, CI/CD pipelines                                       |
+
+This is one of the areas where the services are not exact equivalents. Azure Policy combines several governance functions in one service, while AWS commonly combines AWS Config with Service Control Policies.
+
+---
+
 # 4. Cloud Security Posture and Threat Protection
 
 ## What we used in Azure
@@ -348,6 +389,20 @@ AWS separates those responsibilities between Security Hub, GuardDuty, Inspector,
 There is no technical problem with either design, but the AWS model may require more integration between services.
 
 For a DevSecOps team, these tools are useful because security problems can be discovered continuously rather than waiting for a manual security review.
+
+---
+
+## Cloud Security Summary
+
+| Requirement               | Microsoft Defender for Cloud                                                                   | AWS Security Hub + GuardDuty + Inspector                                                          | Google Security Command Center                                                                        |
+| ------------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| **Overview**              | Centralized cloud security posture management and workload protection platform                 | Multiple AWS services provide posture management, threat detection, and vulnerability management  | Centralized platform for cloud security posture, findings, threats, and vulnerabilities               |
+| **Core Features**         | Secure Score, recommendations, vulnerability management, workload protection, threat detection | Security Hub findings, GuardDuty threat detection, Inspector vulnerability scanning               | Security findings, posture management, threat detection, vulnerability findings, attack path analysis |
+| **Security & Compliance** | Helps assess cloud resources against security recommendations and regulatory standards         | Supports security standards, centralized findings, threat detection, and vulnerability management | Provides centralized risk and compliance visibility across Google Cloud                               |
+| **Pricing Model**         | Advanced Defender plans are charged based on protected workload/resource type                  | Each service uses its own usage-based pricing model                                               | Available through different Security Command Center service tiers                                     |
+| **DevSecOps Integration** | Azure DevOps, GitHub, Azure Monitor, Sentinel, automation workflows                            | EventBridge, Lambda, Security Hub, CI/CD and remediation workflows                                | APIs, Pub/Sub, Cloud Functions, security automation workflows                                         |
+
+The AWS design is more modular. Instead of one direct equivalent to Defender for Cloud, AWS combines several security products to provide similar overall capabilities.
 
 ---
 
@@ -443,6 +498,21 @@ For example:
 `Entra ID → Azure Monitor → Defender → Sentinel → Logic Apps`
 
 This creates a connected workflow from identity and monitoring to detection and automated response.
+
+---
+
+## SIEM and SOAR Summary
+
+| Requirement               | Microsoft Sentinel                                                                      | AWS Security Services                                                                                                    | Google Security Operations                                                      |
+| ------------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------- |
+| **Overview**              | Cloud-native SIEM and SOAR platform                                                     | Security Lake, Security Hub, OpenSearch, EventBridge, and Lambda can be combined into a security operations architecture | Integrated SIEM and SOAR security operations platform                           |
+| **Core Features**         | Data connectors, analytics rules, incidents, threat hunting, KQL, playbooks             | Centralized security data, findings, search, event processing, automated response                                        | Security analytics, detection, investigation, cases, threat hunting, playbooks  |
+| **Security & Compliance** | Supports centralized security monitoring and investigation across multiple environments | Security data and findings can be centralized for investigation and compliance monitoring                                | Centralizes security telemetry and incident response capabilities               |
+| **Pricing Model**         | Mainly affected by security data ingestion, retention, and selected pricing model       | Depends on Security Lake, OpenSearch, Security Hub, storage, and automation usage                                        | Depends on the selected Google Security Operations package and telemetry volume |
+| **DevSecOps Integration** | Azure Monitor, Defender, Logic Apps, GitHub, Azure DevOps                               | EventBridge, Lambda, Security Hub, CI/CD automation                                                                      | APIs, automated playbooks, integrations with security and DevOps tools          |
+
+Microsoft Sentinel and Google Security Operations are relatively direct SIEM/SOAR alternatives. AWS can achieve similar results, but usually by combining several services rather than using one product.
+
 
 ---
 
